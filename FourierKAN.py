@@ -125,8 +125,9 @@ class FourierKANLinear(torch.nn.Module):
         # 将输入张量展平成 (..., in_features)
         x = x.view(-1, self.in_features)
 
-        # 计算基础线性变换的输出
+        # 计算基础线性变换的输出（batch_size,out_features)
         base_output = F.linear(self.base_activation(x), self.base_weight)
+        
 
         # 计算傅里叶基函数的输出
         # 获取频率 k，形状为 (1, 1, num_frequencies)
